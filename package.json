@@ -2,9 +2,8 @@
   "name": "accbot",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "ts-node index.ts"
   },
   "keywords": [],
   "author": "",
