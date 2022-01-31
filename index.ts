@@ -20,6 +20,23 @@ cli.on('messageCreate', (message) => {
 
 cli.on('ready', () => {
     console.log('Your Bot is now READY!')
+
+    let gID = process.env.GUILDID
+    let guild = cli.guilds.cache.get(gID)
+
+    let cmds
+
+    if (guild) {
+        cmds = guild.commands
+    } else {
+        cmds = cli.application?.commands
+    }
+
+    cmds?.create({
+        name: 'ping',
+        description: 'reply with pong'
+    })
 })
+
 
 cli.login(process.env.TOKEN)
