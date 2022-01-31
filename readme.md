@@ -1,6 +1,6 @@
 # Detzz's Activity Bot
 
-- adding your bot token by create file "components/.config.json"
+- adding your bot token by create file "components/config.json"
 
 > prefix
 
