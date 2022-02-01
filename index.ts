@@ -32,12 +32,15 @@ cli.on('ready', () => {
         commands = cli.application?.commands
     }
 
-    commands?.create(
-        {
-            name: 'ping',
-            description: 'reply with pong',
-        }
-    )
+    commands?.create({
+        name: 'ping',
+        description: 'reply with pong',
+    })
+
+    commands?.create({
+        name: 'act',
+        description: 'starting activity'
+    })
 })
 
 cli.on('interactionCreate', async (interaction) => {
@@ -49,12 +52,12 @@ cli.on('interactionCreate', async (interaction) => {
 
     if (commandName === 'ping') {
         interaction.reply({
-            content: 'pong',
+            content: `pong | ${cli.ws.ping} ms`,
             // ephemeral: true,
         })
+    } else if (commandName === 'act') {
+        
     }
-
-
 })
 
 cli.login(process.env.TOKEN)
