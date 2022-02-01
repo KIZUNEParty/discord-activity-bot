@@ -10,14 +10,6 @@ let cli = new dsc.Client({
     ]
 })
 
-// cli.on('messageCreate', (message) => {
-//     if (message.content === 'ping') {
-//         message.reply({
-//             content: 'pong',
-//         })
-//     }
-// })
-
 cli.on('ready', () => {
     console.log('Your Bot is now READY!')
 
@@ -39,7 +31,21 @@ cli.on('ready', () => {
 
     commands?.create({
         name: 'act',
-        description: 'starting activity'
+        description: 'starting activity',
+        options: [
+            {
+                name: 'roomID',
+                description: 'get room ID',
+                required: true,
+                type: dsc.Constants.ApplicationCommandOptionTypes.NUMBER
+            },
+            {
+                name: 'games',
+                description: 'select your game',
+                required: true,
+                type: dsc.Constants.ApplicationCommandOptionTypes.STRING
+            }
+        ]
     })
 })
 
@@ -56,7 +62,14 @@ cli.on('interactionCreate', async (interaction) => {
             // ephemeral: true,
         })
     } else if (commandName === 'act') {
-        
+        let op1 = options.getNumber('roomID')!
+        let op2 = options.getString('games')!
+
+        let link = null
+
+        interaction.reply({
+            content: `Click Here to play : ${link}`
+        })
     }
 })
 
