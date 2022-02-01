@@ -13,7 +13,7 @@ let cli = new dsc.Client({
 cli.on('ready', () => {
     console.log('Your Bot is now READY!')
 
-    const gID = '727389255139328143'
+    const gID = '0'
     let guild = cli.guilds.cache.get(gID)
 
     let commands
@@ -62,8 +62,8 @@ cli.on('interactionCreate', async (interaction) => {
             // ephemeral: true,
         })
     } else if (commandName === 'act') {
-        let op1 = options.getNumber('roomID')!
-        let op2 = options.getString('games')!
+        // let op1 = options.getNumber('roomID')!
+        // let op2 = options.getString('games')!
 
         let link = null
 
