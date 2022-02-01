@@ -6,14 +6,16 @@ denv.config()
 let cli = new dsc.Client({
     intents: [
         Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_INVITES,
+        Intents.FLAGS.GUILD_INTEGRATIONS
     ]
 })
 
 cli.on('ready', () => {
     console.log('Your Bot is now READY!')
 
-    const gID = '0'
+    const gID = '585798261454143489'
     let guild = cli.guilds.cache.get(gID)
 
     let commands
@@ -34,10 +36,10 @@ cli.on('ready', () => {
         description: 'starting activity',
         options: [
             {
-                name: 'roomID',
+                name: 'roomid',
                 description: 'get room ID',
                 required: true,
-                type: dsc.Constants.ApplicationCommandOptionTypes.NUMBER
+                type: dsc.Constants.ApplicationCommandOptionTypes.MENTIONABLE
             },
             {
                 name: 'games',
