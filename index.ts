@@ -10,33 +10,51 @@ let cli = new dsc.Client({
     ]
 })
 
-cli.on('messageCreate', (message) => {
-    if (message.content === 'ping') {
-        message.reply({
-            content: 'pong',
-        })
-    }
-})
+// cli.on('messageCreate', (message) => {
+//     if (message.content === 'ping') {
+//         message.reply({
+//             content: 'pong',
+//         })
+//     }
+// })
 
 cli.on('ready', () => {
     console.log('Your Bot is now READY!')
 
-    let gID = process.env.GUILDID
+    const gID = '727389255139328143'
     let guild = cli.guilds.cache.get(gID)
 
-    let cmds
+    let commands
 
     if (guild) {
-        cmds = guild.commands
+        commands = guild.commands
     } else {
-        cmds = cli.application?.commands
+        commands = cli.application?.commands
     }
 
-    cmds?.create({
-        name: 'ping',
-        description: 'reply with pong'
-    })
+    commands?.create(
+        {
+            name: 'ping',
+            description: 'reply with pong',
+        }
+    )
 })
 
+cli.on('interactionCreate', async (interaction) => {
+    if (!interaction.isCommand()) {
+        return
+    }
+
+    let {commandName, options} = interaction
+
+    if (commandName === 'ping') {
+        interaction.reply({
+            content: 'pong',
+            // ephemeral: true,
+        })
+    }
+
+
+})
 
 cli.login(process.env.TOKEN)
